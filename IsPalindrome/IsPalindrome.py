@@ -19,9 +19,17 @@ def isPalindromeThirdAlt(string: str) -> bool:
     reversed_list.reverse()
     return "".join(list(re.sub(r'\W+', '', string).lower())) == "".join(reversed_list)
 
+def isPalindromeFourth(string: str) -> bool:
+    clean_string = re.sub(r'\W+', '', string).lower()
+    reversed_string = ''
+    for i in range(len(clean_string), 0, -1):
+        reversed_string += clean_string[i-1]
+    return clean_string == reversed_string
+
 if __name__ == '__main__':
     print(isPalindromeFirst("Red roses run no risk, sir, on Nurse's order"))
     print(isPalindromeSecond("Red roses run no risk, sir, on Nurse's order"))
     print(isPalindromeSecondAlt("Red roses run no risk, sir, on Nurse's order"))
     print(isPalindromeThird("Red roses run no risk, sir, on Nurse's order"))
     print(isPalindromeThirdAlt("Red roses run no risk, sir, on Nurse's order"))
+    print(isPalindromeFourth("Red roses run no risk, sir, on Nurse's order"))
