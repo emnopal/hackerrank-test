@@ -37,7 +37,7 @@ def Flipping32BitsForth(n: int) -> int:
 def Flipping32BitsFifth(n: int) -> int:
     return int(~n & 0xFFFFFFFF)
 
-def Flipping32BitsSixth(n):
+def Flipping32BitsSixth(n: int) -> int:
     bins = bin(n)[2:]
     bins32 = "".join("0" for _ in range(32 - len(bins)))
     bins = "".join(bins32 + bins)
