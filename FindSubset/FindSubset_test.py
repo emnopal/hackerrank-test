@@ -1,7 +1,7 @@
 import unittest
+import logging
 from itertools import combinations, chain
 from typing import List, TypeVar
-import logging
 
 log = logging.getLogger(__name__)
 
@@ -31,14 +31,14 @@ def combinations_alt(lst: List[Numeric | Text], n: int) -> List[List[Numeric | T
     if n == 0:
         return [[]]
 
-    l = []
+    combList = []
 
     for i in range(0, len(lst)):
         m = lst[i]
         remLst = lst[i + 1:]
         for p in combinations_alt(remLst, n - 1):
-            l.append([m] + p)
-    return l
+            combList.append([m] + p)
+    return combList
 
 
 def FindSubsetThree(arrNum: List[Numeric]) -> List[List[Numeric]]:
