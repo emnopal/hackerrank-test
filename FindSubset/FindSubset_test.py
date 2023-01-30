@@ -54,7 +54,21 @@ class TestFindSubset(unittest.TestCase):
         loglevel = logging.DEBUG
         logging.basicConfig(level=loglevel, format="%(filename)s:%(lineno)s:%(funcName)20s() %(message)s")
         self.arrNum = [4, 5, 6]
+        self.arrStr = list("hello")
         self.arrNumResult = [[], [4], [5], [6], [4, 5], [4, 6], [5, 6], [4, 5, 6]]
+        self.arrNumResultN2 = [[4, 5], [4, 6], [5, 6]]
+        self.arrStrResult = [
+            ['h', 'e', 'l'], ['h', 'e', 'l'], ['h', 'e', 'o'], ['h', 'l', 'l'], ['h', 'l', 'o'],
+            ['h', 'l', 'o'], ['e', 'l', 'l'], ['e', 'l', 'o'], ['e', 'l', 'o'], ['l', 'l', 'o']
+        ]
+
+    def test_combinations_alt_str(self):
+        log.debug(combinations_alt(self.arrStr, 3))
+        self.assertEqual(combinations_alt(self.arrStr, 3), self.arrStrResult, f'Should be {self.arrStrResult}')
+
+    def test_combinations_alt_num(self):
+        log.debug(combinations_alt(self.arrNum, 2))
+        self.assertEqual(combinations_alt(self.arrNum, 2), self.arrNumResultN2, f'Should be {self.arrNumResultN2}')
 
     def test_FindSubsetOne(self):
         log.debug(FindSubsetOne(self.arrNum))
@@ -75,3 +89,4 @@ class TestFindSubset(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
