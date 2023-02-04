@@ -3,6 +3,7 @@ from typing import Optional, Self, TypeVar
 
 T = TypeVar("T")
 
+
 class Node:
     def __init__(self, data: T) -> None:
         self.data: T = data
@@ -56,6 +57,7 @@ class TestLinkedList:
             node = node.next
         print(']')
 
+
 if __name__ == '__main__':
     s = TestLinkedList()
     # for i in [1,2,3,4,5]:
@@ -72,4 +74,3 @@ if __name__ == '__main__':
         s.append(i)
     s.print_forward()
     s.print_backward()
-
