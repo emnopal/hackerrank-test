@@ -37,7 +37,7 @@ class LinkedList {
 
     print() {
         let node = this.head;
-        while(node.next){
+        while(node){
             console.log(node.data);
             node = node.next;
         }
@@ -45,7 +45,7 @@ class LinkedList {
 
     printBackwards() {
         let node = this.reverse()
-        while(node.next){
+        while(node){
             console.log(node.data);
             node = node.next;
         }
