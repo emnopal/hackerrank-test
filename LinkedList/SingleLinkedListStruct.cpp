@@ -8,6 +8,7 @@ struct Node {
 
 struct LinkedList {
     Node* head;
+    int length;
 };
 
 void append(LinkedList *LL, int data, std::string position = "end") {
@@ -19,11 +20,13 @@ void append(LinkedList *LL, int data, std::string position = "end") {
     if (position == "front") {
         newNode->next = LL->head;
         LL->head = newNode;
+        LL->length++;
         return;
     }
 
     if (!LL->head) {
         LL->head = newNode;
+        LL->length++;
         return;
     }
 
@@ -32,6 +35,7 @@ void append(LinkedList *LL, int data, std::string position = "end") {
         temp = temp->next;
     }
     temp->next = newNode;
+    LL->length++;
 
 }
 
@@ -62,6 +66,10 @@ void reversePrint(LinkedList *LL) {
     }
 }
 
+int size(LinkedList *LL) {
+    return LL->length;
+}
+
 int main(){
     LinkedList *ll = new LinkedList{};
     LinkedList *lld = new LinkedList{};
@@ -71,6 +79,9 @@ int main(){
     }
     print(ll);
     reversePrint(ll);
+    std::cout << std::endl;
+    std::cout << ll->length << std::endl;
+    std::cout << size(ll) << std::endl;
 
     std::cout << "\n";
 
@@ -79,6 +90,9 @@ int main(){
     }
     print(lld);
     reversePrint(lld);
+    std::cout << std::endl;
+    std::cout << lld->length << std::endl;
+    std::cout << size(lld) << std::endl;
 
     return 0;
 }
