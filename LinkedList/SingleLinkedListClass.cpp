@@ -1,6 +1,13 @@
 #include <iostream>
 #include <string>
 
+// todo for implementing method/function
+class NotImplemented : public std::logic_error
+{
+public:
+    NotImplemented() : std::logic_error("Function or method not yet implemented") { };
+};
+
 class Node {
 public:
     int data;
@@ -15,8 +22,11 @@ class LinkedList {
 private:
     Node* head;
 public:
+    int length;
+
     LinkedList() {
         head = nullptr;
+        length = 0;
     }
 
     void append(int data, std::string position = "end") {
@@ -25,11 +35,13 @@ public:
         if (position == "front") {
             newNode->next = head;
             head = newNode;
+            length++;
             return;
         }
 
         if (!head) {
             head = newNode;
+            length++;
             return;
         }
 
@@ -38,6 +50,7 @@ public:
             temp = temp->next;
         }
         temp->next = newNode;
+        length++;
         return;
 
     }
@@ -69,6 +82,20 @@ public:
         }
     }
 
+    // TODO: add remove
+    void remove() {
+        throw new NotImplemented;
+    }
+
+    // TODO: add update
+    void update() {
+        throw new NotImplemented;
+    }
+
+    int size() {
+        return length;
+    }
+
 };
 
 int main() {
@@ -78,13 +105,20 @@ int main() {
     }
     ll.print();
     ll.reversePrint();
+    std::cout << std::endl;
+    std::cout << ll.length << std::endl;
+    std::cout << ll.size() << std::endl;
 
-    std::cout << "\n";
+    std::cout << std::endl;
 
     for(int i = 0; i <= 10; i++) {
-        ll.append(i, "front");
+        lld.append(i, "front");
     }
-    ll.print();
-    ll.reversePrint();
+    lld.print();
+    lld.reversePrint();
+    std::cout << std::endl;
+    std::cout << lld.length << std::endl;
+    std::cout << lld.size() << std::endl;
+
     return 0;
 }
