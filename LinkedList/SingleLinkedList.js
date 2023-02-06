@@ -8,6 +8,7 @@ class Node{
 class LinkedList {
     constructor() {
         this.head = null;
+        this.length = 0;
     }
 
     append(data, position) {
@@ -16,11 +17,13 @@ class LinkedList {
         if (position === 'front') {
             node.next = this.head;
             this.head = node;
+            this.length++;
             return;
         }
 
         if (!this.head) {
             this.head = node;
+            this.length++;
             return;
         }
 
@@ -29,6 +32,7 @@ class LinkedList {
             temp = temp.next;
         }
         temp.next = node;
+        this.length++;
         return;
     }
 
@@ -60,6 +64,10 @@ class LinkedList {
         }
     }
 
+    size() {
+        return this.length;
+    }
+
 }
 
 const main = () => {
@@ -73,6 +81,10 @@ const main = () => {
     ll.print();
     console.log()
     ll.printBackwards();
+    console.log()
+    console.log(ll.length);
+    console.log()
+    console.log(ll.size());
 
     console.log()
 
@@ -83,6 +95,11 @@ const main = () => {
     lld.print();
     console.log()
     lld.printBackwards();
+    console.log()
+    console.log(lld.length);
+    console.log()
+    console.log(lld.size());
+
 }
 
 main();
