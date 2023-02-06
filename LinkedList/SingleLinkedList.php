@@ -13,10 +13,12 @@ class Node{
 
 class LinkedList {
     private ?Node $head;
+    public int $length;
 
     public function __construct()
     {
         $this->head = null;
+        $this->length = 0;
     }
 
     public function append(mixed $data, ?string $options = 'end'): void {
@@ -25,11 +27,13 @@ class LinkedList {
         if ($options == 'front') {
             $node->next = $this->head;
             $this->head = $node;
+            $this->length++;
             return;
         }
 
         if (!$this->head) {
             $this->head = $node;
+            $this->length++;
             return;
         }
 
@@ -38,6 +42,7 @@ class LinkedList {
             $temp = $temp->next;
         }
         $temp->next = $node;
+        $this->length++;
         return;
 
     }
@@ -70,6 +75,10 @@ class LinkedList {
         }
     }
 
+    public function size(): int {
+        return $this->length;
+    }
+
 }
 
 function main(): void {
@@ -82,6 +91,9 @@ function main(): void {
     $ll->print();
     echo PHP_EOL;
     $ll->printReverse();
+    echo PHP_EOL .$ll->length .PHP_EOL;
+    echo $ll->size() .PHP_EOL;
+
 
     echo PHP_EOL;
 
@@ -91,6 +103,9 @@ function main(): void {
     $lld->print();
     echo PHP_EOL;
     $lld->printReverse();
+    echo PHP_EOL .$lld->length .PHP_EOL;
+    echo $lld->size() .PHP_EOL;
+
 }
 
 main();
