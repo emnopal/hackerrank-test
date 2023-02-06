@@ -8,7 +8,8 @@ type Node struct {
 }
 
 type LinkedList struct {
-	head *Node
+	head   *Node
+	length int
 }
 
 type appendOptions struct {
@@ -25,11 +26,13 @@ func (list *LinkedList) append(data interface{}, options *appendOptions) {
 	if options.position == "front" {
 		node.next = list.head
 		list.head = node
+		list.length++
 		return
 	}
 
 	if list.head == nil {
 		list.head = node
+		list.length++
 		return
 	}
 
@@ -38,6 +41,7 @@ func (list *LinkedList) append(data interface{}, options *appendOptions) {
 		temp = temp.next
 	}
 	temp.next = node
+	list.length++
 	return
 }
 
@@ -70,6 +74,10 @@ func (list *LinkedList) printBackwards() {
 	}
 }
 
+func (list *LinkedList) size() int {
+	return list.length
+}
+
 func main() {
 	var ll *LinkedList = &LinkedList{}
 	var lld *LinkedList = &LinkedList{}
@@ -81,6 +89,10 @@ func main() {
 	ll.print()
 	fmt.Println()
 	ll.printBackwards()
+	fmt.Println()
+	fmt.Println(ll.length)
+	fmt.Println()
+	fmt.Println(ll.size())
 
 	fmt.Println()
 
@@ -91,5 +103,9 @@ func main() {
 	lld.print()
 	fmt.Println()
 	lld.printBackwards()
+	fmt.Println()
+	fmt.Println(lld.length)
+	fmt.Println()
+	fmt.Println(lld.size())
 
 }
