@@ -1,4 +1,4 @@
-from typing import Optional, TypeVar
+from typing import TypeVar
 
 
 T = TypeVar("T")
@@ -11,7 +11,8 @@ class Node:
 
 class SingleLinkedList:
     def __init__(self):
-        self.head: Optional[Node] = None
+        self.head: Node = None
+        self.length: int = 0
 
     def append(self, data: T, position: str = "end") -> None:
         new_node: Node = Node(data)
@@ -19,21 +20,24 @@ class SingleLinkedList:
         if position == "front":
             new_node.next = self.head
             self.head = new_node
+            self.length += 1
             return
 
         if not self.head:
             self.head = new_node
+            self.length += 1
             return
 
-        temp = self.head
+        temp: Node = self.head
         while temp.next:
             temp = temp.next
         temp.next = new_node
+        self.length += 1
         return
 
     def reverse(self) -> Node:
         new_list: Node = None
-        temp = self.head
+        temp: Node = self.head
         while temp:
             next_node = temp.next
             temp.next = new_list
@@ -42,7 +46,7 @@ class SingleLinkedList:
         return new_list
 
     def print_forward(self) -> None:
-        node = self.head
+        node: Node = self.head
         print('[', end='')
         while node:
             print(node.data, end=',')
@@ -50,26 +54,31 @@ class SingleLinkedList:
         print(']')
 
     def print_backward(self) -> None:
-        node = self.reverse()
+        node: Node = self.reverse()
         print('[', end='')
         while node:
             print(node.data, end=',')
             node = node.next
         print(']')
 
+    def size(self) -> int:
+        return self.length
+
 
 if __name__ == '__main__':
-    s = SingleLinkedList()
-    sb = SingleLinkedList()
+    s: SingleLinkedList = SingleLinkedList()
+    sb: SingleLinkedList = SingleLinkedList()
 
-    for i in range(10):
+    for i in range(11):
         s.append(i)
     s.print_forward()
     s.print_backward()
+    print(s.size())
 
     print()
 
-    for i in range(10):
+    for i in range(11):
         sb.append(i, position="front")
     sb.print_forward()
     sb.print_backward()
+    print(sb.size())
