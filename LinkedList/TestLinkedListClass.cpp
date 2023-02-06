@@ -6,7 +6,7 @@ public:
     Node* next;
     Node(int data){
         this->data = data;
-        this->next = NULL;
+        this->next = nullptr;
     }
 };
 
@@ -15,7 +15,7 @@ private:
     Node* head;
 public:
     LinkedList() {
-        head = NULL;
+        head = nullptr;
     }
 
     void append(int data) {
@@ -24,7 +24,7 @@ public:
             head = newNode;
         } else {
             Node* temp = head;
-            while (temp->next) {
+            while (temp->next != nullptr) {
                 temp = temp->next;
             }
             temp->next = newNode;
@@ -32,8 +32,8 @@ public:
     }
 
     Node *reverse() {
-        Node *reverseLL, *next_node, *temp = head;
-        while(temp) {
+        Node *reverseLL = nullptr, *next_node, *temp = head;
+        while(temp != nullptr) {
             next_node = temp->next;
             temp->next = reverseLL;
             reverseLL = temp;
@@ -44,7 +44,7 @@ public:
 
     void print() {
         Node* temp = head;
-        while (temp) {
+        while (temp != nullptr) {
             std::cout << temp->data << std::endl;
             temp = temp->next;
         }
@@ -52,7 +52,7 @@ public:
 
     void reversePrint() {
         Node* temp = reverse();
-        while (temp) {
+        while (temp != nullptr) {
             std::cout << temp->data << std::endl;
             temp = temp->next;
         }
@@ -62,7 +62,7 @@ public:
 
 int main() {
     LinkedList ll;
-    for(int i = 0; i <= 5; i++) {
+    for(int i = 0; i <= 10; i++) {
         ll.append(i);
     }
     ll.print();
