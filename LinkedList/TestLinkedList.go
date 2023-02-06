@@ -28,7 +28,7 @@ func (list *LinkedList) append(data interface{}) {
 	}
 }
 
-func (list *LinkedList) reverse() (newNode *Node){
+func (list *LinkedList) reverse() (newNode *Node) {
 	// use bubble sort for reversing
 	newNode = nil
 	var temp *Node = list.head
