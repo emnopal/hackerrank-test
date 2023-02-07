@@ -1,13 +1,6 @@
 #include <iostream>
 #include <string>
 
-// todo for implementing method/function
-class NotImplemented : public std::logic_error
-{
-public:
-    NotImplemented() : std::logic_error("Function or method not yet implemented") { };
-};
-
 class Node {
 public:
     int data;
@@ -80,16 +73,6 @@ public:
             std::cout << temp->data << " ";
             temp = temp->next;
         }
-    }
-
-    // TODO: add remove
-    void remove() {
-        throw new NotImplemented;
-    }
-
-    // TODO: add update
-    void update() {
-        throw new NotImplemented;
     }
 
     int size() {
