@@ -17,7 +17,6 @@ type appendOptions struct {
 }
 
 func (list *LinkedList) append(data interface{}, options *appendOptions) {
-
 	var node *Node = &Node{
 		data: data,
 		next: nil,
