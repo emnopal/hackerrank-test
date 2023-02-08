@@ -68,17 +68,35 @@ class SingleLinkedList:
 if __name__ == '__main__':
     s: SingleLinkedList = SingleLinkedList()
     sb: SingleLinkedList = SingleLinkedList()
+    sa: SingleLinkedList = SingleLinkedList()
+    sf: SingleLinkedList = SingleLinkedList()
 
     for i in range(11):
         s.append(i)
+        sb.append(i, position="front")
+
+    for i in [6,4,3,1,10,8,9,12,0]:
+        sa.append(i)
+        sa.append(i, position="front")
+
     s.print_forward()
     s.print_backward()
     print(s.size())
 
     print()
 
-    for i in range(11):
-        sb.append(i, position="front")
     sb.print_forward()
     sb.print_backward()
     print(sb.size())
+
+    print()
+
+    sa.print_forward()
+    sa.print_backward()
+    print(sa.size())
+
+    print()
+
+    sf.print_forward()
+    sf.print_backward()
+    print(sf.size())
