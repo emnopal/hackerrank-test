@@ -73,10 +73,22 @@ int size(LinkedList *LL) {
 int main(){
     LinkedList *ll = new LinkedList{};
     LinkedList *lld = new LinkedList{};
+    LinkedList *lla = new LinkedList{};
+    LinkedList *llf = new LinkedList{};
+
+    int arr[] = {6,4,3,1,10,8,9,12,0};
 
     for(int i = 0; i <= 10; i++) {
         append(ll, i);
+        append(lld, i, "front");
     }
+
+    for(auto i: arr) {
+        append(lla, i);
+        append(llf, i, "front");
+    }
+
+
     print(ll);
     reversePrint(ll);
     std::cout << std::endl;
@@ -85,14 +97,27 @@ int main(){
 
     std::cout << "\n";
 
-    for(int i = 0; i <= 10; i++) {
-        append(lld, i, "front");
-    }
     print(lld);
     reversePrint(lld);
     std::cout << std::endl;
     std::cout << lld->length << std::endl;
     std::cout << size(lld) << std::endl;
+
+    std::cout << "\n";
+
+    print(lla);
+    reversePrint(lla);
+    std::cout << std::endl;
+    std::cout << lla->length << std::endl;
+    std::cout << size(lla) << std::endl;
+
+    std::cout << "\n";
+
+    print(llf);
+    reversePrint(llf);
+    std::cout << std::endl;
+    std::cout << llf->length << std::endl;
+    std::cout << size(llf) << std::endl;
 
     return 0;
 }
