@@ -82,29 +82,53 @@ class LinkedList {
 }
 
 function main(): void {
+
     $ll = new LinkedList();
     $lld = new LinkedList();
+    $lla = new LinkedList();
+    $llf = new LinkedList();
+
+    $arr = [6,4,3,1,10,8,9,12,0];
 
     for($i = 0; $i <= 5; $i++) {
         $ll->append($i);
+        $lld->append($i, options: 'front');
     }
+
+    foreach($arr as $i) {
+        $lla->append($i);
+        $llf->append($i, options: 'front');
+    }
+
     $ll->print();
     echo PHP_EOL;
     $ll->printReverse();
     echo PHP_EOL .$ll->length .PHP_EOL;
     echo $ll->size() .PHP_EOL;
 
-
     echo PHP_EOL;
 
-    for($i = 0; $i <= 5; $i++) {
-        $lld->append($i, options: 'front');
-    }
     $lld->print();
     echo PHP_EOL;
     $lld->printReverse();
     echo PHP_EOL .$lld->length .PHP_EOL;
     echo $lld->size() .PHP_EOL;
+
+    echo PHP_EOL;
+
+    $lla->print();
+    echo PHP_EOL;
+    $lla->printReverse();
+    echo PHP_EOL .$lla->length .PHP_EOL;
+    echo $lla->size() .PHP_EOL;
+
+    echo PHP_EOL;
+
+    $llf->print();
+    echo PHP_EOL;
+    $llf->printReverse();
+    echo PHP_EOL .$llf->length .PHP_EOL;
+    echo $llf->size() .PHP_EOL;
 
 }
 
