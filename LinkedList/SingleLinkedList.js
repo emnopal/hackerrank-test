@@ -73,10 +73,19 @@ class LinkedList {
 const main = () => {
     const ll = new LinkedList();
     const lld = new LinkedList();
+    const lla = new LinkedList();
+    const llf = new LinkedList();
+    const arr = [6,4,3,1,10,8,9,12,0];
 
     for (let i = 0; i <= 5; i++) {
         ll.append(i);
+        lld.append(i, position='front');
     }
+
+    arr.forEach(i => {
+        lla.append(i);
+        llf.append(i, position='front')
+    });
 
     ll.print();
     console.log()
@@ -88,10 +97,6 @@ const main = () => {
 
     console.log()
 
-    for (let i = 0; i <= 5; i++) {
-        lld.append(i, position='front');
-    }
-
     lld.print();
     console.log()
     lld.printBackwards();
@@ -99,6 +104,26 @@ const main = () => {
     console.log(lld.length);
     console.log()
     console.log(lld.size());
+
+    console.log()
+
+    lla.print();
+    console.log()
+    lla.printBackwards();
+    console.log()
+    console.log(lla.length);
+    console.log()
+    console.log(lla.size());
+
+    console.log()
+
+    llf.print();
+    console.log()
+    llf.printBackwards();
+    console.log()
+    console.log(llf.length);
+    console.log()
+    console.log(llf.size());
 
 }
 
