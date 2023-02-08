@@ -80,9 +80,18 @@ func (list *LinkedList) size() int {
 func main() {
 	var ll *LinkedList = &LinkedList{}
 	var lld *LinkedList = &LinkedList{}
+	var lla *LinkedList = &LinkedList{}
+	var llf *LinkedList = &LinkedList{}
+	var arr []int = []int{6, 4, 3, 1, 10, 8, 9, 12, 0}
 
 	for i := 0; i <= 5; i++ {
 		ll.append(i, &appendOptions{})
+		lld.append(i, &appendOptions{position: "front"})
+	}
+
+	for _, i := range arr {
+		lla.append(i, &appendOptions{})
+		llf.append(i, &appendOptions{position: "front"})
 	}
 
 	ll.print()
@@ -95,10 +104,6 @@ func main() {
 
 	fmt.Println()
 
-	for i := 0; i <= 5; i++ {
-		lld.append(i, &appendOptions{position: "front"})
-	}
-
 	lld.print()
 	fmt.Println()
 	lld.printBackwards()
@@ -106,5 +111,25 @@ func main() {
 	fmt.Println(lld.length)
 	fmt.Println()
 	fmt.Println(lld.size())
+
+	fmt.Println()
+
+	lla.print()
+	fmt.Println()
+	lla.printBackwards()
+	fmt.Println()
+	fmt.Println(lla.length)
+	fmt.Println()
+	fmt.Println(lla.size())
+
+	fmt.Println()
+
+	llf.print()
+	fmt.Println()
+	llf.printBackwards()
+	fmt.Println()
+	fmt.Println(llf.length)
+	fmt.Println()
+	fmt.Println(llf.size())
 
 }
