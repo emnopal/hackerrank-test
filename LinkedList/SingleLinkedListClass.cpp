@@ -82,11 +82,21 @@ public:
 };
 
 int main() {
-    LinkedList ll, lld;
+    LinkedList ll, lld, lla, llf;
+    int arr[] = {6,4,3,1,10,8,9,12,0};
+
     for(int i = 0; i <= 10; i++) {
         ll.append(i);
+        lld.append(i, "front");
     }
+
+    for(auto i: arr) {
+        lla.append(i);
+        llf.append(i, "front");
+    }
+
     ll.print();
+    std::cout << std::endl;
     ll.reversePrint();
     std::cout << std::endl;
     std::cout << ll.length << std::endl;
@@ -94,14 +104,30 @@ int main() {
 
     std::cout << std::endl;
 
-    for(int i = 0; i <= 10; i++) {
-        lld.append(i, "front");
-    }
     lld.print();
+    std::cout << std::endl;
     lld.reversePrint();
     std::cout << std::endl;
     std::cout << lld.length << std::endl;
     std::cout << lld.size() << std::endl;
+
+    std::cout << std::endl;
+
+    lla.print();
+    std::cout << std::endl;
+    lla.reversePrint();
+    std::cout << std::endl;
+    std::cout << lla.length << std::endl;
+    std::cout << lla.size() << std::endl;
+
+    std::cout << std::endl;
+
+    llf.print();
+    std::cout << std::endl;
+    llf.reversePrint();
+    std::cout << std::endl;
+    std::cout << llf.length << std::endl;
+    std::cout << llf.size() << std::endl;
 
     return 0;
 }
