@@ -30,13 +30,21 @@ func (node *Node[Numeric]) insert(data Numeric) {
 		if node.left != nil {
 			node.left.insert(data)
 		} else {
-			node.left = &Node[Numeric]{data, nil, nil}
+			node.left = &Node[Numeric]{
+				data:  data,
+				left:  nil,
+				right: nil,
+			}
 		}
 	} else {
 		if node.right != nil {
 			node.right.insert(data)
 		} else {
-			node.right = &Node[Numeric]{data, nil, nil}
+			node.right = &Node[Numeric]{
+				data:  data,
+				left:  nil,
+				right: nil,
+			}
 		}
 	}
 
@@ -105,7 +113,11 @@ func (tree *Tree[Numeric]) insert(data Numeric) *Tree[Numeric] {
 	if tree.root != nil {
 		tree.root.insert(data)
 	} else {
-		tree.root = &Node[Numeric]{data, nil, nil}
+		tree.root = &Node[Numeric]{
+			data:  data,
+			left:  nil,
+			right: nil,
+		}
 	}
 	return tree
 }
@@ -129,7 +141,9 @@ func (tree *Tree[Numeric]) show(options *Options) {
 
 func main() {
 	var arr []int = []int{10, 12, 5, 4, 20, 8, 7, 15, 13}
-	var tree Tree[int] = Tree[int]{root: nil}
+	var tree Tree[int] = Tree[int]{
+		root: nil,
+	}
 
 	for _, i := range arr {
 		tree.insert(i)
