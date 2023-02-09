@@ -93,18 +93,6 @@ if __name__ == '__main__':
     for i in arr:
         tree.insert(i)
 
-    ''' This will create:
-                    10
-                 /      \
-               5         12
-              / \           \
-            4     8          20
-                 /          /
-                7         15
-                         /
-                       13
-    '''
-
     print(tree.find(1))
     print(tree.find(12))
 
