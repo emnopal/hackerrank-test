@@ -1,56 +1,66 @@
 #include <iostream>
 #include <string>
 
-class Node {
+class Node
+{
 public:
     int data;
-    Node* next;
-    Node(int data){
+    Node *next;
+    Node(int data)
+    {
         this->data = data;
         this->next = nullptr;
     }
 };
 
-class LinkedList {
+class LinkedList
+{
 private:
-    Node* head;
+    Node *head;
+
 public:
     int length;
 
-    LinkedList() {
+    LinkedList()
+    {
         head = nullptr;
         length = 0;
     }
 
-    void append(int data, std::string position = "end") {
-        Node* newNode = new Node(data);
+    void append(int data, std::string position = "end")
+    {
+        Node *newNode = new Node(data);
 
-        if (position == "front") {
+        if (position == "front")
+        {
             newNode->next = head;
             head = newNode;
             length++;
             return;
         }
 
-        if (!head) {
+        if (!head)
+        {
             head = newNode;
             length++;
             return;
         }
 
-        Node* temp = head;
-        while (temp->next != nullptr) {
+        Node *temp = head;
+        while (temp->next != nullptr)
+        {
             temp = temp->next;
         }
         temp->next = newNode;
         length++;
         return;
-
     }
 
-    Node *reverse() {
+    Node *reverse()
+    {
         Node *reverseLL = nullptr, *next_node, *temp = head;
-        while(temp != nullptr) {
+        while (temp != nullptr)
+        {
             next_node = temp->next;
             temp->next = reverseLL;
             reverseLL = temp;
@@ -59,38 +69,45 @@ public:
         return reverseLL;
     }
 
-    void print() {
-        Node* temp = head;
-        while (temp != nullptr) {
+    void print()
+    {
+        Node *temp = head;
+        while (temp != nullptr)
+        {
             std::cout << temp->data << " ";
             temp = temp->next;
         }
     }
 
-    void reversePrint() {
-        Node* temp = reverse();
-        while (temp != nullptr) {
+    void reversePrint()
+    {
+        Node *temp = reverse();
+        while (temp != nullptr)
+        {
             std::cout << temp->data << " ";
             temp = temp->next;
         }
     }
 
-    int size() {
+    int size()
+    {
         return length;
     }
-
 };
 
-int main() {
+int main()
+{
     LinkedList ll, lld, lla, llf;
-    int arr[] = {6,4,3,1,10,8,9,12,0};
+    int arr[] = {6, 4, 3, 1, 10, 8, 9, 12, 0};
 
-    for(int i = 0; i <= 10; i++) {
+    for (int i = 0; i <= 10; i++)
+    {
         ll.append(i);
         lld.append(i, "front");
     }
 
-    for(auto i: arr) {
+    for (auto i : arr)
+    {
         lla.append(i);
         llf.append(i, "front");
     }
