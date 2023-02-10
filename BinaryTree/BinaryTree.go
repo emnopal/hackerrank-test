@@ -21,11 +21,9 @@ type Options struct {
 }
 
 func (node *Node[Numeric]) insert(data Numeric) {
-
 	if node.data == data {
 		return
 	}
-
 	if data < node.data {
 		if node.left != nil {
 			node.left.insert(data)
@@ -47,34 +45,37 @@ func (node *Node[Numeric]) insert(data Numeric) {
 			}
 		}
 	}
-
 }
 
 func (node *Node[Numeric]) find(data Numeric) bool {
-
 	if data == node.data {
 		return true
 	}
-
 	if data < node.data {
 		if node.left != nil {
 			return node.left.find(data)
 		}
 		return false
 	}
-
 	if node.right != nil {
 		return node.right.find(data)
 	}
 	return false
-
 }
 
 func (node *Node[Numeric]) show(options *Options) {
-
 	if node != nil {
-
-		if options.order == "in" {
+		switch options.order {
+		case "pre":
+			fmt.Print(node.data, " ")
+			if node.left != nil {
+				node.left.show(options)
+			}
+			if node.right != nil {
+				node.right.show(options)
+			}
+			return
+		case "in":
 			if node.left != nil {
 				node.left.show(options)
 			}
@@ -83,9 +84,7 @@ func (node *Node[Numeric]) show(options *Options) {
 				node.right.show(options)
 			}
 			return
-		}
-
-		if options.order == "post" {
+		case "post":
 			if node.left != nil {
 				node.left.show(options)
 			}
@@ -94,17 +93,16 @@ func (node *Node[Numeric]) show(options *Options) {
 			}
 			fmt.Print(node.data, " ")
 			return
+		default:
+			fmt.Print(node.data, " ")
+			if node.left != nil {
+				node.left.show(options)
+			}
+			if node.right != nil {
+				node.right.show(options)
+			}
+			return
 		}
-
-		fmt.Print(node.data, " ")
-		if node.left != nil {
-			node.left.show(options)
-		}
-		if node.right != nil {
-			node.right.show(options)
-		}
-		return
-
 	}
 
 }
@@ -144,14 +142,11 @@ func main() {
 	var tree Tree[int] = Tree[int]{
 		root: nil,
 	}
-
 	for _, i := range arr {
 		tree.insert(i)
 	}
-
 	fmt.Println(tree.find(1))
 	fmt.Println(tree.find(12))
-
 	tree.show(&Options{order: "pre"})
 	tree.show(&Options{order: "in"})
 	tree.show(&Options{order: "post"})
