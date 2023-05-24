@@ -1,20 +1,18 @@
-from typing import TypeVar
-
-
-T = TypeVar("T")
+from typing import Self, Any, Optional
+import mypy
 
 
 class Node:
-    def __init__(self, data: T) -> None:
-        self.data: T = data
-        self.next: T = None
+    def __init__(self, data: Any) -> None:
+        self.data: Any = data
+        self.next: Optional[Self] = None
 
 class SingleLinkedList:
     def __init__(self):
-        self.head: Node = None
+        self.head: Optional[Node] = None
         self.length: int = 0
 
-    def append(self, data: T, position: str = "end") -> None:
+    def append(self, data: Any, position: str = "end") -> None:
         new_node: Node = Node(data)
 
         if position == "front":
@@ -35,9 +33,9 @@ class SingleLinkedList:
         self.length += 1
         return
 
-    def reverse(self) -> Node:
-        new_list: Node = None
-        temp: Node = self.head
+    def reverse(self) -> Optional[Node]:
+        new_list: Optional[Node] = None
+        temp: Optional[Node] = self.head
         while temp:
             next_node = temp.next
             temp.next = new_list
@@ -46,7 +44,7 @@ class SingleLinkedList:
         return new_list
 
     def print_forward(self) -> None:
-        node: Node = self.head
+        node: Optional[Node] = self.head
         print('[', end='')
         while node:
             print(node.data, end=',')
@@ -54,7 +52,7 @@ class SingleLinkedList:
         print(']')
 
     def print_backward(self) -> None:
-        node: Node = self.reverse()
+        node: Optional[Node] = self.reverse()
         print('[', end='')
         while node:
             print(node.data, end=',')

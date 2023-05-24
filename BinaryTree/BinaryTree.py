@@ -1,14 +1,14 @@
 from __future__ import annotations
-from typing import TypeVar
+from typing import TypeVar, Optional
 
-Numeric = TypeVar("Numeric", int, float)
+Numeric = int | float
 
 
 class Node:
     def __init__(self, data: Numeric) -> None:
         self.data: Numeric = data
-        self.left: Node = None
-        self.right: Node = None
+        self.left: Optional[Node] = None
+        self.right: Optional[Node] = None
 
     def insert(self, data: Numeric) -> None:
         if self.data == data:
@@ -24,7 +24,7 @@ class Node:
             else:
                 self.right = Node(data)
 
-    def find(self, data) -> bool:
+    def find(self, data: Numeric) -> bool:
         if data == self.data:
             return True
         if data < self.data:
@@ -35,7 +35,7 @@ class Node:
             return self.right.find(data)
         return False
 
-    def show(self, order='pre') -> None:
+    def show(self, order: str ='pre') -> None:
         if self:
             match order:
                 case 'pre':
@@ -70,7 +70,7 @@ class Node:
 
 class Tree:
     def __init__(self) -> None:
-        self.root: Node = None
+        self.root: Optional[Node] = None
 
     def insert(self, data: Numeric) -> Tree:
         if self.root:
@@ -84,7 +84,7 @@ class Tree:
             return self.root.find(data)
         return False
 
-    def show(self, order='pre') -> None:
+    def show(self, order: str = 'pre') -> None:
         if self.root:
             print(f'\n{order.capitalize()}order', end=": ")
             self.root.show(order)
