@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"C"
+	"fmt"
+)
 
 type NumTypes interface {
 	int | int64 | float32 | float64 | uint | uint64

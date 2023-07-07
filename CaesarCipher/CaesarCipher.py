@@ -4,7 +4,7 @@ import logging
 log = logging.getLogger(__name__)
 
 
-def SimplestCaesarCipher(text: str, shift: int = 4, method: str = 'encrypt'):
+def SimplestCaesarCipher(text: str, shift: int = 4, method: str = 'encrypt') -> str:
     result = ""
 
     if method == 'decrypt':
